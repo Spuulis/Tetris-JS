@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<!--------------------------THE STYLE SHEET---------------------------------->
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<!-------------------------------p5.js--------------------------------------->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.6/p5.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.7/addons/p5.sound.js"></script>
+		<!------------------------Tetris game scripts-------------------------------->
+		<script language="javascript" type="text/javascript" src="grid.js"></script>
+		<script language="javascript" type="text/javascript" src="blocks.js"></script>
+		<script language="javascript" type="text/javascript" src="figure.js"></script>
+		<script language="javascript" type="text/javascript" src="skatch.js"></script>
+	</head>
+	<body>
+		<!---------------------------THE TETRIS GAME--------------------------------->
+		<div id="tetrisHolder">
+			<!--------------------SCORE BOARD SCREEN-------------------------->
+			<div id="scoreBoard">
+				<table class="scoreTable">
+					<tr>
+						<td class="scoreName">SCORE</td>
+						<td class="scoreName">LEVEL</td>
+						<td class="scoreName">HIGHSCORE</td>
+					<tr>
+					<tr>
+						<td class="scoreValue" id="score">Loading...</td>
+						<td class="scoreValue" id="level">Loading...</td>
+						<td class="scoreValue" id="highscore">Loading...</td>
+					<tr>
+				</table>
+			</div>
+			<!----------------------THE GAME HOLDER--------------------------->
+			<div id="gameHolder"></div>
+			<!---------------------GAME OVER SCREEN--------------------------->
+			<div id="gameOver">
+				<h1>GAME OVER</h1>
+				<table>
+					<tr>
+						<td class="left">SCORE:</td>
+						<td class="right" id="GO-Score">Loading...</td>
+					</tr>
+					<tr>
+						<td class="left">HIGHSCORE:</td>
+						<td class="right" id="GO-Highscore">Loading...</td>
+					</tr>
+				</table>
+				<h2 id="blink">PRESS SPACE TO PLAY AGAIN</h2>
+			</div>
+			<!------------------LEAK OF BROWSER SUPPORT----------------------->
+			<div id="browserNotSupported">Unfortunately, your browser does not support some functions of the game <br />:(</div>
+		</div>
+	</body>
+</html>

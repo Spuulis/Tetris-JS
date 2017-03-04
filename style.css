@@ -1,0 +1,113 @@
+/*-------------------------------FONT FOR THE TETRIS GAME---------------------------------*/
+
+@font-face {
+    font-family: 'Gameplay';
+    src: url('gameplay-webfont.woff2') format('woff2'),
+         url('gameplay-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+/*--------------------------------REMOVE DEFAULT BODY STYLE-------------------------------*/
+body {
+	padding: 0px;
+	margin: 0px;
+}
+
+/*-----------------------------STYLE FOR THE GAME INTERFACE-------------------------------*/
+#tetrisHolder {
+	background-color: #DDDDDD;
+	width: 260px;
+	padding: 7px;
+	border-color: black;
+	border-width: 5px;
+	border-style: double;
+	position: relative;
+}
+
+/*-----------------------------STYLE FOR THE GAME OVER SCREEN------------------------------*/
+#gameOver {
+	position: absolute;
+	height: 130px;
+	width: 200px;
+	left: 30px;
+	top: 200px;
+	border: 4px solid black;
+	background-color: #666666;
+}
+
+#gameOver h1 {
+	font-family: 'Gameplay';
+	font-size: 25px;
+	text-align: center;
+	margin: 20px 0px 10px 0px;
+}
+
+#gameOver table {
+	table-layout: fixed;
+	width: 200px;
+}
+
+#gameOver tr {
+	width: 100px;
+}
+
+#gameOver table td {
+	font-family: 'Gameplay';
+	font-size: 12px;
+	padding: 0.5px 0px 0.5px 0px;
+}
+
+#gameOver table td.left {
+	text-align: right;
+}
+
+#gameOver table td.right {
+	text-align: left;
+}
+
+#gameOver h2 {
+	font-family: 'Gameplay';
+	font-size: 10px;
+	text-align: center;
+	margin: 10px 0px 0px 0px;
+}
+
+/*-------------------------------STYLE FOR THE SCORE TABLE---------------------------------*/
+.scoreTable {
+	table-layout: fixed;
+	background-color: #BBBBBB;
+	padding: 7px;
+	border: 3px solid black;
+	margin-bottom: 7px;
+}
+
+td.scoreName {
+	width: 86px;
+	font-family: 'Gameplay';
+	font-size: 12px;
+}
+
+td.scoreValue {
+	width: 86px;
+	font-family: 'Gameplay';
+	font-size: 10px;
+}
+
+/*-------------------------------STYLE FOR THE GAME HOLDER--------------------------------*/
+#gameHolder {
+	height: 0px;
+}
+
+/*----------------STYLE FOR THE LEAK OF BROWSER SUPPORT WINDOW----------------------------*/
+#browserNotSupported {
+	height: 440px;
+	background-color: blue;
+	color: white;
+	font-family: Arial;
+	font-size: 25px;
+	padding: 10px;
+	position: relative;
+	top: 0px;
+}
