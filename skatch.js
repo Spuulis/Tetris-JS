@@ -30,14 +30,14 @@ var blinkState = false; //Is the blinking text white or black?
 var song; //The game sound
 
 function preload() {
-	song = loadSound("https://raw.githubusercontent.com/Spuulis/GitTut/master/karobeniki.mp3");
+	song = loadSound("https://raw.githubusercontent.com/Spuulis/Tetris-JS/master/karobeniki.mp3");
 }
 
 function setup() {
 	
-	if(window.localStorage.getItem("highscore") == null) { //If there is no highscore stored on localStorage then create one and set it to 0
+	/*if(window.localStorage.getItem("highscore") == null) { //If there is no highscore stored on localStorage then create one and set it to 0
 		window.localStorage.getItem("highscore") = 0;
-	}
+	}*/
 
 	grd = new Grid(); //Create the Grid
 	
@@ -62,6 +62,9 @@ function setup() {
 function restart() {
 	document.getElementById("gameOver").style.visibility = 'hidden'; //Make GameOver screen hidden
 	highscore = localStorage.getItem('highscore'); //Get highscore
+	if (highscore == null) {
+		highscore = 0;
+	}
 	fig = new Figure(); //Create the Figure
 	grd.clearGrid(); //Set everything in the grid to 0
 	gameState = "RUNNING"; //Set game running
