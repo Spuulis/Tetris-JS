@@ -103,10 +103,10 @@ td.scoreValue {
 /*----------------STYLE FOR THE LEAK OF BROWSER SUPPORT WINDOW----------------------------*/
 #browserNotSupported {
 	height: 440px;
-	background-color: blue;
+	background-color: #333333;
 	color: white;
 	font-family: Arial;
-	font-size: 25px;
+	font-size: 20px;
 	padding: 10px;
 	position: relative;
 	top: 0px;
