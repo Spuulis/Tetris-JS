@@ -3,6 +3,9 @@ const xPos = 0, yPos = 0; //Position of the canvas
 const scale = 20; //Scale of the game (Should be dividable with width and height)
 const rows = height / scale; //Count of rows and columns of the grid
 const cols = width / scale;
+const borderSmall = scale / 16;
+const squareSize = scale - scale / 8;
+const maxBorder = scale / 2 - borderSmall;
 var gameState; //State of the game
 
 var speed = 200; //Start speed for the figures
@@ -115,14 +118,18 @@ function draw() {
 		rect(0, 0, width, height);
 		blink();
 		checkRestart();
+	}else if(gameState == "DROPPING") {
+		grd.dropping();
 	}
 }
 
 function createNewFigureIfCollided() { //If figure has colided then create a new figure
 	if(colided && gameState != "OVER") {
-		colided = false;
-		fig = new Figure();
 		grd.checkForLines();
+		if (gameState != "DROPPING") {
+			colided = false;
+			fig = new Figure();
+		}
 	}
 }
 

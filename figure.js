@@ -24,6 +24,7 @@ function Figure() {
 				this._fall();
 			}
 		}else if(this.moved + 100000 / ((speed + level * 20) * (this.down)) <= millis()) { //If the time has past
+			console.log(Math.floor(millis() - this.moved));
 			this._fall(); //Fall one block
 		}
 		this.down = 1; //Set falling down speed back to normal
@@ -32,14 +33,16 @@ function Figure() {
 	
 	
 	this.show = function() { //Show the figure
-		fill(this.color);
-		strokeWeight(0.5);
-		stroke(this.color);
-		for(i = 0; i < 4; i++) {
-			rect((this.x + this.bx[i]) * scale + scale / 16,
-				(this.y + this.by[i]) * scale + scale / 16,
-				scale - scale / 8,
-				scale - scale / 8);
+		if(!colided){
+			fill(this.color);
+			strokeWeight(0.5);
+			stroke(this.color);
+			for(i = 0; i < 4; i++) {
+				rect((this.x + this.bx[i]) * scale + borderSmall,
+					(this.y + this.by[i]) * scale + borderSmall,
+					squareSize,
+					squareSize);
+			}
 		}
 	}
 	
