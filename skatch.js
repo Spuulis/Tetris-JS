@@ -1,6 +1,7 @@
-const width = 260, height = 440; //Width and Height of the game
+const height = 440; //Width and Height of the game 440
+const width = 13 * height / 22;
 const xPos = 0, yPos = 0; //Position of the canvas
-const scale = 20; //Scale of the game (Should be dividable with width and height)
+const scale = height / 22; //Scale of the game (Should be dividable with width and height)
 const rows = height / scale; //Count of rows and columns of the grid
 const cols = width / scale;
 const borderSmall = scale / 16;
