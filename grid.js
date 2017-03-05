@@ -1,6 +1,9 @@
 function Grid() {
 	this.grid = new Array(); //Array to store playing field
-
+	
+	this.droppingLines = new Array();
+	this.droppingTime = null;
+	
 	this.clearGrid = function() { //Make it two dimensional
 		for(c = 0; c < cols; c++) {
 			this.grid[c] = new Array();
@@ -18,10 +21,10 @@ function Grid() {
 					strokeWeight(0);
 					stroke(this.grid[c][r]);
 					for(i = 0; i < 4; i++) {
-						rect(c * scale + scale / 16,
-							r * scale + scale / 16,
-							scale - scale / 8,
-							scale - scale / 8);
+						rect(c * scale + borderSmall,
+							r * scale + borderSmall,
+							squareSize,
+							squareSize);
 					}
 				}
 			}
@@ -39,9 +42,10 @@ function Grid() {
 				}
 			}
 			if(this.drop) { //If the row is full
-				this._doDrop(r); //Delete that spesific row
+				gameState = "DROPPING";
+				this.droppingLines[this.drops] = r;
+				this.clearRow(r);
 				this.drops++; //Add one to the drop counter
-				r++; //Check the row in the same spot because the last dropped
 			}
 		}
 		score += level * 100 * this.drops; //Calculate the score according to drop count
@@ -62,4 +66,42 @@ function Grid() {
 			level++;
 		}
 	}
+	
+	this.clearRow = function(row) {
+		for(dC = 0; dC < cols; dC++) { //Lower every column above the cleared row
+			this.grid[dC][row] = 0; //Overwrite the previous column
+		}
+	}
+	
+	this.dropping = function() {
+		this.dropScale = 1.00;
+		this.neededTime = 100000 / ((speed + level * 20));
+		if(this.droppingTime == null) {
+			this.droppingTime = millis();
+		}
+		if(this.droppingTime + this.neededTime <= millis()) {
+			for(i = this.droppingLines.length - 1; i >= 0; i--) {
+				this._doDrop(this.droppingLines[i]);
+			}
+			gameState = "RUNNING";
+			colided = false;
+			this.droppingTime = null;
+			this.dropScale = 0.00;
+			this.droppingLines = new Array();
+			fig = new Figure();
+		} else {
+			this.dropScale = 1 - (millis() - this.droppingTime) / this.neededTime;
+			fill("#FFFFFF");
+			for(i = 0; i < this.droppingLines.length; i++) {
+				for(c = 0; c < cols; c++) {
+					rect(c * scale + borderSmall + (1 - this.dropScale) * maxBorder,
+						this.droppingLines[i] * scale + borderSmall + (1 - this.dropScale) * maxBorder,
+						squareSize * this.dropScale,
+						squareSize * this.dropScale);
+				}
+			}
+		}
+	}
 }
+
+//129731
