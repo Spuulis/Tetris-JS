@@ -10,6 +10,7 @@ const maxBorder = scale / 2 - borderSmall;
 var gameState; //State of the game
 
 var speed = 200; //Start speed for the figures
+var timeForFall = 100000 / (speed + 20);
 var clearedLines = 0; //How many lines have been cleared
 var nextLevelLines = 5; //On how many lines the level changes
 var score; //The score
@@ -38,10 +39,6 @@ function preload() {
 }
 
 function setup() {
-	
-	/*if(window.localStorage.getItem("highscore") == null) { //If there is no highscore stored on localStorage then create one and set it to 0
-		window.localStorage.getItem("highscore") = 0;
-	}*/
 
 	grd = new Grid(); //Create the Grid
 	
