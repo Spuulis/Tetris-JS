@@ -23,8 +23,7 @@ function Figure() {
 			while(!colided){  //Fall until it reches the grid
 				this._fall();
 			}
-		}else if(this.moved + 100000 / ((speed + level * 20) * (this.down)) <= millis()) { //If the time has past
-			console.log(Math.floor(millis() - this.moved));
+		}else if(this.moved + timeForFall / this.down <= millis()) { //If the time has past
 			this._fall(); //Fall one block
 		}
 		this.down = 1; //Set falling down speed back to normal

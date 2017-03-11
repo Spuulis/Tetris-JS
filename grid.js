@@ -64,6 +64,7 @@ function Grid() {
 		clearedLines++; //Add one to the cleared line counter
 		if(clearedLines % nextLevelLines == 0) { //If a spesific number of rows have been cleaned increase the level
 			level++;
+			timeForFall = 100000 / (speed + level * 20);
 		}
 	}
 	
@@ -75,22 +76,20 @@ function Grid() {
 	
 	this.dropping = function() {
 		this.dropScale = 1.00;
-		this.neededTime = 100000 / ((speed + level * 20));
 		if(this.droppingTime == null) {
 			this.droppingTime = millis();
 		}
-		if(this.droppingTime + this.neededTime <= millis()) {
+		if(this.droppingTime + timeForFall <= millis()) {
 			for(i = this.droppingLines.length - 1; i >= 0; i--) {
 				this._doDrop(this.droppingLines[i]);
 			}
 			gameState = "RUNNING";
 			colided = false;
-			this.droppingTime = null;
-			this.dropScale = 0.00;
-			this.droppingLines = new Array();
 			fig = new Figure();
+			this.droppingTime = null;
+			this.droppingLines = new Array();
 		} else {
-			this.dropScale = 1 - (millis() - this.droppingTime) / this.neededTime;
+			this.dropScale = 1 - (millis() - this.droppingTime) / timeForFall;
 			fill("#FFFFFF");
 			for(i = 0; i < this.droppingLines.length; i++) {
 				for(c = 0; c < cols; c++) {

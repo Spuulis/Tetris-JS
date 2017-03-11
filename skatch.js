@@ -1,6 +1,7 @@
-const width = 260, height = 440; //Width and Height of the game
+const height = 440; //Width and Height of the game 440
+const width = 13 * height / 22;
 const xPos = 0, yPos = 0; //Position of the canvas
-const scale = 20; //Scale of the game (Should be dividable with width and height)
+const scale = height / 22; //Scale of the game (Should be dividable with width and height)
 const rows = height / scale; //Count of rows and columns of the grid
 const cols = width / scale;
 const borderSmall = scale / 16;
@@ -9,6 +10,7 @@ const maxBorder = scale / 2 - borderSmall;
 var gameState; //State of the game
 
 var speed = 200; //Start speed for the figures
+var timeForFall = 100000 / (speed + 20);
 var clearedLines = 0; //How many lines have been cleared
 var nextLevelLines = 5; //On how many lines the level changes
 var score; //The score
@@ -37,10 +39,6 @@ function preload() {
 }
 
 function setup() {
-	
-	/*if(window.localStorage.getItem("highscore") == null) { //If there is no highscore stored on localStorage then create one and set it to 0
-		window.localStorage.getItem("highscore") = 0;
-	}*/
 
 	grd = new Grid(); //Create the Grid
 	
