@@ -33,7 +33,7 @@ h1 {
 	border-width: 5px;
 	border-style: double;
 	position: relative;
-	margin: 0 auto;
+	margin: auto;
 }
 
 /*-----------------------------STYLE FOR THE GAME OVER SCREEN------------------------------*/
