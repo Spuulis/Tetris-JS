@@ -1,7 +1,7 @@
 function Figure() {
 	this.type = floor(random(0, 7)); //Select a random type
 	
-	this.x = floor(width / scale / 2) - 1; //Start at the top of the screen
+	this.x = 6; //Start at the top of the screen
 	this.y = -2;
 	
 	this.bx = new Array(); //Coordinates of the figure squares
@@ -37,8 +37,8 @@ function Figure() {
 			strokeWeight(0.5);
 			stroke(this.color);
 			for(i = 0; i < 4; i++) {
-				rect((this.x + this.bx[i]) * scale + borderSmall,
-					(this.y + this.by[i]) * scale + borderSmall,
+				rect((this.x + this.bx[i]) * gScale + borderSmall,
+					(this.y + this.by[i]) * gScale + borderSmall,
 					squareSize,
 					squareSize);
 			}

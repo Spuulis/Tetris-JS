@@ -1,3 +1,11 @@
+var width = 260, height = 500; //Width and Height of the game
+var gScale = 20; //Scale of the game (Should be dividable with width and height)
+const rows = 22; //Count of rows and columns of the grid
+const cols = 13;
+var borderSmall;
+var squareSize;
+var maxBorder;
+/*
 const height = 440; //Width and Height of the game 440
 const width = 13 * height / 22;
 const xPos = 0, yPos = 0; //Position of the canvas
@@ -7,6 +15,7 @@ const cols = width / scale;
 const borderSmall = scale / 16;
 const squareSize = scale - scale / 8;
 const maxBorder = scale / 2 - borderSmall;
+*/
 var gameState; //State of the game
 
 var speed = 200; //Start speed for the figures
@@ -18,8 +27,9 @@ var highscore;  //The highscore
 var level; //The level
 
 var fig, grd; //Figure and Grid objects
-var canv; //Canvas
 var colided = false; //Has figure colided with the grid?
+var canv; //Canvas
+var ifc; //Interface
 
 var inputBuffer = new Array(); //Store input in an input buffer
 
@@ -41,23 +51,21 @@ function preload() {
 function setup() {
 
 	grd = new Grid(); //Create the Grid
-	
-	canv = createCanvas(width, height); //Create canvas
+	ifc = new Interface();
+
+	ifc.setup();
+
+	canv = createCanvas(ifc.width, ifc.height); //Create canvas
 	canv.parent("gameHolder"); //Put the canvas in HTML DIV "gameHolder"
 	
-	scoreBoard = document.getElementById("score"); //Link HTML elements for displaying information to variables
-	levelBoard = document.getElementById("level");
-	highscoreBoard = document.getElementById("highscore");
 	GO_Score = document.getElementById("GO-Score");
 	GO_Highscore = document.getElementById("GO-Highscore");
 	
 	restart(); //Set starting variables
 	
-	document.getElementById("gameHolder").style.height = '440px'; //Remove the "browser not supported" window and restore canvas holder
-	document.getElementById("browserNotSupported").style.height = '0px';
-	document.getElementById("browserNotSupported").style.padding = '0px';
-	document.getElementById("browserNotSupported").innerHTML = '';
 	song.loop();
+
+	ifc.loadingFinished();
 }
 
 function restart() {
@@ -103,7 +111,7 @@ function handleInput() {
 function draw() {
 	background(40); //Gray background
 	show();
-	showInfo();
+	ifc.showInfo();
 	if(gameState == "RUNNING") { //Do if the state of the game is running
 		handleInput();
 		fig.update(); //Update the figure
@@ -156,12 +164,6 @@ function keyPressed() {
 		inputBuffer[inputBuffer.length] = "DROP";
 	}
 	return false; //Return false as a default value
-}
-
-function showInfo() {
-	scoreBoard.innerHTML = Math.floor(score); //Show score on the score board
-	levelBoard.innerHTML = level; //Show level on the score board
-	highscoreBoard.innerHTML = highscore; //Show high score on the score board
 }
 
 function gameOver() {
