@@ -29,6 +29,7 @@ function Grid() {
 				}
 			}
 		}
+		console.log("DRAWING GRID FINISHED!");
 	}
 	
 	this.checkForLines = function() { //Check whether some rows are full
