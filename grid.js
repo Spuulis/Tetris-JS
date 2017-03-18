@@ -21,8 +21,8 @@ function Grid() {
 					strokeWeight(0);
 					stroke(this.grid[c][r]);
 					for(i = 0; i < 4; i++) {
-						rect(c * scale + borderSmall,
-							r * scale + borderSmall,
+						rect(c * gScale + borderSmall,
+							r * gScale + borderSmall,
 							squareSize,
 							squareSize);
 					}
@@ -93,8 +93,8 @@ function Grid() {
 			fill("#FFFFFF");
 			for(i = 0; i < this.droppingLines.length; i++) {
 				for(c = 0; c < cols; c++) {
-					rect(c * scale + borderSmall + (1 - this.dropScale) * maxBorder,
-						this.droppingLines[i] * scale + borderSmall + (1 - this.dropScale) * maxBorder,
+					rect(c * gScale + borderSmall + (1 - this.dropScale) * maxBorder,
+						this.droppingLines[i] * gScale + borderSmall + (1 - this.dropScale) * maxBorder,
 						squareSize * this.dropScale,
 						squareSize * this.dropScale);
 				}

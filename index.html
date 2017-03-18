@@ -6,18 +6,23 @@
 		<!--                             p5.js                                     -->
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.6/p5.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.7/addons/p5.sound.js"></script>
+        <!--                            jQuery                                     -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 		<!--                      Tetris game scripts                              -->
-		<script language="javascript" type="text/javascript" src="grid.js"></script>
-		<script language="javascript" type="text/javascript" src="blocks.js"></script>
-		<script language="javascript" type="text/javascript" src="figure.js"></script>
-		<script language="javascript" type="text/javascript" src="skatch.js"></script>
+        <script src="interface.js"></script>
+        <script src="grid.js"></script>
+		<script src="blocks.js"></script>
+		<script src="figure.js"></script>
+		<script src="skatch.js"></script>
+        <title>Tetris</title>
 	</head>
 	<body>
+        <center><img src="title.png" style="height: 60px; margin: 30px;" id="title"/></center>
 		<!--                            THE TETRIS GAME                         -->
 		<div id="tetrisHolder">
 			<!--                SCORE BOARD SCREEN                          -->
 			<div id="scoreBoard">
-				<table class="scoreTable">
+				<table id="scoreTable">
 					<tr>
 						<td class="scoreName">SCORE</td>
 						<td class="scoreName">LEVEL</td>
@@ -34,21 +39,22 @@
 			<div id="gameHolder"></div>
 			<!--                   GAME OVER SCREEN                         -->
 			<div id="gameOver">
-				<h1>GAME OVER</h1>
-				<table>
-					<tr>
+				<h1 id="gameOver_h1">GAME OVER</h1>
+				<table id="gameOver_table">
+					<tr class="gameOver_tr">
 						<td class="left">SCORE:</td>
 						<td class="right" id="GO-Score">Loading...</td>
 					</tr>
-					<tr>
+					<tr class="gameOver_tr">
 						<td class="left">HIGHSCORE:</td>
 						<td class="right" id="GO-Highscore">Loading...</td>
 					</tr>
 				</table>
 				<h2 id="blink">PRESS SPACE TO PLAY AGAIN</h2>
 			</div>
-			<!--                LEAK OF BROWSER SUPPORT                     -->
-			<div id="browserNotSupported">The game is loading... Please allow about 5 seconds for game to load. If you have to wait longer, your browser probably does not support some functions of the game. Please try another browser in that case. </div>
 		</div>
+        <div id="loading"></div>
+        <img src="left_corner.png" style="position: absolute; bottom: 0; left: 0; height: 400px;" id="leftCorner"/>
+        <img src="right_corner.png" style="position: absolute; bottom: 0; right: 0; height: 280px;" id="rightCorner"/>
 	</body>
 </html>

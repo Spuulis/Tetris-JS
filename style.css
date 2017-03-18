@@ -15,15 +15,25 @@ body {
 	margin: 0px;
 }
 
+/*-------------------------------------TITLE TETRIS---------------------------------------*/
+h1 {
+	font-family: 'Gameplay';
+	font-size: 60px;
+	color: black;
+	position: relative;
+	margin: 0 auto;
+}
+
 /*-----------------------------STYLE FOR THE GAME INTERFACE-------------------------------*/
 #tetrisHolder {
 	background-color: #DDDDDD;
-	width: 260px;
+	width: 450px;
 	padding: 7px;
 	border-color: black;
 	border-width: 5px;
 	border-style: double;
 	position: relative;
+	margin: 0 auto;
 }
 
 /*-----------------------------STYLE FOR THE GAME OVER SCREEN------------------------------*/
@@ -53,18 +63,18 @@ body {
 	width: 100px;
 }
 
-#gameOver table td {
+#gameOver table td.left {
+	text-align: right;
 	font-family: 'Gameplay';
 	font-size: 12px;
 	padding: 0.5px 0px 0.5px 0px;
 }
 
-#gameOver table td.left {
-	text-align: right;
-}
-
 #gameOver table td.right {
 	text-align: left;
+	font-family: 'Gameplay';
+	font-size: 12px;
+	padding: 0.5px 0px 0.5px 0px;
 }
 
 #gameOver h2 {
@@ -75,7 +85,7 @@ body {
 }
 
 /*-------------------------------STYLE FOR THE SCORE TABLE---------------------------------*/
-.scoreTable {
+#scoreTable {
 	table-layout: fixed;
 	background-color: #BBBBBB;
 	padding: 7px;
@@ -100,14 +110,12 @@ td.scoreValue {
 	height: 0px;
 }
 
-/*----------------STYLE FOR THE LEAK OF BROWSER SUPPORT WINDOW----------------------------*/
-#browserNotSupported {
-	height: 440px;
-	background-color: #333333;
-	color: white;
-	font-family: Arial;
-	font-size: 20px;
-	padding: 10px;
-	position: relative;
-	top: 0px;
+/*-------------------------STYLE FOR THE LOADING SCREEN-----------------------------------*/
+#loading {
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: #FFF;
+	position: fixed;
 }
